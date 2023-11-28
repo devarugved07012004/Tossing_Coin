@@ -4,9 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tossing a coin</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: black;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        p {
+            font-size: 18px;
+            color: white;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .moves {
+            font-size: 16px;
+            color: #ff9400;
+            margin-top: 10px;
+        }
+
+        .resulta {
+            font-size: 24px;
+            font-weight: bold;
+            color: yellow;
+            margin-top: 10px;
+        }
+
+        .sel {
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-top: 20px;
+        }
+
+        button.score {
+            margin-top: 20px;
+            background-color: #2ecc71;
+        }
+
+        button.reset {
+            background-color: #e74c3c;
+        }
+
+        button.score, button.reset {
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button.score:hover {
+            background-color: #27ae60;
+        }
+
+        button.reset:hover {
+            background-color: #c0392b;
+        }
+    </style>
 </head>
 <body>
-    <p>Heads or Tails</p>
+    <h1>Heads or Tails</h1>
     <p>Tossing a coin</p>
     <button onclick="function3('heads');">Heads</button>
     <button onclick="function3('tails');">Tails</button>
