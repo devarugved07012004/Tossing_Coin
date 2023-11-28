@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tossing a coin</title>
+</head>
+<body>
+    <p>Heads or Tails</p>
+    <p>Tossing a coin</p>
+    <button onclick="function3('heads');">Heads</button>
+    <button onclick="function3('tails');">Tails</button>
+    <p class="moves"></p>
+    <p class="resulta"></p>
+    <p class="sel"></p>
+    <button onclick="p()">Score</button>
+    <button onclick="r()">Reset Score</button>
+</body>
+<script>
+    let score=JSON.parse(localStorage.getItem('score')) ||{
+        wins:0,losses:0
+    }
+
+    function update(){
+    document.querySelector('.sel').innerHTML=`Wins: ${score.wins} Losses: ${score.losses}`;
+    }
+
+    update();
+    function p(){
+        alert(`Your Score is
+        Wins: ${score.wins}
+        Losses: ${score.losses}`);
+    }
+    
+    function r(){
+        score.wins=0;
+        score.losses=0;
+        localStorage.removeItem('score');
+        update();
+        document.querySelector('.resulta').innerHTML=``;
+        document.querySelector('.moves').innerHTML=``;
+    }
+    
+   
+    function function3(p){
+        let a=Math.random();
+        let result='';
+        let c='';
+        if(p==='heads'){
+            if(a>0.5){
+                c='heads';
+                result='You Win';
+            }else{
+                c='tails';
+                result='You Lost';
+            }
+        }
+        else{
+            if(a>0.5){
+                c='heads';
+                result='You Lost';
+            }else{
+                c='tails';
+                result='You Win';
+            }
+        }
+        if(result==='You Win'){
+            score.wins+=1;
+        }
+        else{
+            score.losses+=1;
+        }
+        document.querySelector('.moves').innerHTML=`Your move : ${p} Computer Move: ${c}`;
+        document.querySelector('.resulta').innerHTML=result;
+        localStorage.setItem('score', JSON.stringify(score));
+
+//         alert(`It was ${c},${result}
+// Wins: ${score.wins} Losses: ${score.losses}`);
+        update();
+    }
+    
+</script>
+</html>
