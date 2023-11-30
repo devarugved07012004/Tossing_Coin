@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tossing a coin</title>
-    <style>
+     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: black;
@@ -94,13 +94,14 @@
 <body>
     <h1>Heads or Tails</h1>
     <p>Tossing a coin</p>
-    <button onclick="function3('heads');">Heads</button>
-    <button onclick="function3('tails');">Tails</button>
+    <button onclick="function3('Heads');">Heads</button>
+    <button onclick="function3('Tails');">Tails</button>
     <p class="moves"></p>
     <p class="resulta"></p>
     <p class="sel"></p>
     <button onclick="p()">Score</button>
     <button onclick="r()">Reset Score</button>
+    <button class="dgh" onclick="ap()">Auto play</button>
 </body>
 <script>
     let score=JSON.parse(localStorage.getItem('score')) ||{
@@ -114,9 +115,9 @@
     update();
     function p(){
         alert(`Your Score is
-        Wins: ${score.wins}
-        Losses: ${score.losses}`);
-    }
+                        Wins: ${score.wins}
+                        Losses: ${score.losses}`);
+}
     
     function r(){
         score.wins=0;
@@ -126,44 +127,58 @@
         document.querySelector('.resulta').innerHTML=``;
         document.querySelector('.moves').innerHTML=``;
     }
-    
-   
-    function function3(p){
-        let a=Math.random();
-        let result='';
+
+ 
+    function function2(){
+        let k=Math.random();
         let c='';
-        if(p==='heads'){
-            if(a>0.5){
-                c='heads';
+        if(k>0.5){
+            c='Heads'
+
+        }else{
+            c='Tails'
+        }
+        return c;
+    }
+    let playing=false;
+    let id;
+    function ap(){
+        if(!playing){
+            playing=true;
+            id=setInterval(() => {
+                let cm=function2();
+                function3(cm);
+            }, 1000);
+            document.querySelector('.dgh').innerHTML='Stop Play';
+        }else{
+            playing=false;
+            clearInterval(id);
+            document.querySelector('.dgh').innerHTML='Auto Play';
+        }
+    }
+    function function3(l){
+        let result='';
+        let c=function2();
+        if(l===c){
                 result='You Win';
             }else{
-                c='tails';
                 result='You Lost';
             }
-        }
-        else{
-            if(a>0.5){
-                c='heads';
-                result='You Lost';
-            }else{
-                c='tails';
-                result='You Win';
-            }
-        }
+        
         if(result==='You Win'){
             score.wins+=1;
         }
         else{
             score.losses+=1;
         }
-        document.querySelector('.moves').innerHTML=`Your move : ${p} Computer Move: ${c}`;
+        document.querySelector('.moves').innerHTML=`Your move : ${l} Computer Move: ${c}`;
         document.querySelector('.resulta').innerHTML=result;
         localStorage.setItem('score', JSON.stringify(score));
 
 //         alert(`It was ${c},${result}
 // Wins: ${score.wins} Losses: ${score.losses}`);
         update();
-    }
     
+    }
 </script>
 </html>
