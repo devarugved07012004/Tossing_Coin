@@ -156,6 +156,16 @@
             document.querySelector('.dgh').innerHTML='Auto Play';
         }
     }
+
+   
+    document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'h') {
+    function3('Heads');
+  } else if (event.key === 't') {
+    function3('Tails');
+  }
+});
+
     function function3(l){
         let result='';
         let c=function2();
